@@ -22,6 +22,14 @@ box-shadow: 0px 0px 31px 21px rgba(0,0,0,0.76);
 	class="d-flex justify-content-center align-items-center"
 	style="height: 100vh; background-image: url('images/bgIndex.jpg');background-size: cover;">
 
+<%	String e = "2";
+	if(e.equals(request.getParameter("estado"))) {
+		HttpSession sesion = request.getSession();
+		sesion.invalidate();
+		response.sendRedirect("index.jsp");
+	}
+%>
+
 	<div class="container bg-white borderShadow p-5" style="width: 400px">
 		<form action="Login" method="post">
 			<h1 class="text-center mb-3 fw-600">INICIAR SESIÓN</h1>
@@ -43,13 +51,7 @@ box-shadow: 0px 0px 31px 21px rgba(0,0,0,0.76);
 		</form>
 	</div>
 
-	<div>
-		<h1 class="text-white"><%=request.getAttribute("nombre") + " " + request.getAttribute("apellido") %></h1>
-	</div>
-	
-	<div>
-		<h1 class="text-white"><%=request.getAttribute("error") %></h1>
-	</div>
+
 
 	<!-- JavaScript -->
 	<script src="js/bootstrap.bundle.min.js"></script>

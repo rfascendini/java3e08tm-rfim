@@ -16,7 +16,7 @@ public class DataUsuario {
 		
 		try {
 			stmt= DbConnector.getInstancia().conectar().createStatement();
-			rs= stmt.executeQuery("select * from usuario");
+			rs= stmt.executeQuery("select * from usuarios where eliminado = 0");
 			if(rs!=null) {
 				while(rs.next()) {
 					usuario r=new usuario();
@@ -24,13 +24,13 @@ public class DataUsuario {
 					r.setIdUsuario(rs.getInt("idUsuario"));
 					r.setNombre(rs.getString("nombre"));
 					r.setApellido(rs.getString("apellido"));
-					// r.setFechaNacimiento(rs.getDate("fechaNacimiento"));
-					// r.setSexo(rs.getString("sexo"));
+//					r.setFechaNacimiento(rs.getDate("fechaNacimiento"));
+//					r.setSexo(rs.getString("sexo"));
 					r.setDomicilio(rs.getString("domicilio"));
 					r.setPassword(rs.getString("password"));
 					r.setEmail(rs.getString("email"));
 					r.setTelefono(rs.getString("telefono"));
-					r.setHabilitado(rs.getInt("eliminado"));
+					r.setHabilitado(rs.getInt("habilitado"));
 					r.setEliminado(rs.getInt("eliminado"));
 				
 					usuarios.add(r);

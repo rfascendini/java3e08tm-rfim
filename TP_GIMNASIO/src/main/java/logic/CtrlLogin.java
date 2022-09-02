@@ -35,11 +35,5 @@ public class CtrlLogin {
 		}
 	}
 	
-	public LinkedList<usuario> listarUsuarios() {
-		return du.listarUsuarios();
-		
-	}
-	
-	
 	
 }
