@@ -27,7 +27,7 @@ box-shadow: 0px 0px 31px 21px rgba(0,0,0,0.76);
 			<h1 class="text-center mb-3 fw-600">INICIAR SESIÓN</h1>
 
 			<div class="form-floating">
-				<input type="number" name="dni" class="form-control"
+				<input type="number" name="dni" min="1" max="99999999" class="form-control"
 					id="floatingInput" placeholder="N° de Documento" /> <label
 					for="floatingInput">DNI</label>
 			</div>
@@ -44,11 +44,11 @@ box-shadow: 0px 0px 31px 21px rgba(0,0,0,0.76);
 	</div>
 
 	<div>
-		<h1><%=request.getAttribute("nombre") + " " + request.getAttribute("apellido") %></h1>
+		<h1 class="text-white"><%=request.getAttribute("nombre") + " " + request.getAttribute("apellido") %></h1>
 	</div>
 	
 	<div>
-		<h1><%=request.getAttribute("error") %></h1>
+		<h1 class="text-white"><%=request.getAttribute("error") %></h1>
 	</div>
 
 	<!-- JavaScript -->

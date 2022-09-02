@@ -33,7 +33,7 @@ public class DbConnector {
 	public Connection conectar() {
 		try {
 			if(conn==null || conn.isClosed()) {
-				conn=DriverManager.getConnection("jdbc:mysql://"+host+":"+port+"/"+db, user, password);
+				conn=DriverManager.getConnection("jdbc:mysql://"+host+":"+port+"/"+db+"?serverTimezone=UTC", user, password);
 				conectados=0;
 			}
 		} catch (SQLException e) {
