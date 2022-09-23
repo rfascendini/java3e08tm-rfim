@@ -7,6 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/estilos.css">
 <title>Login</title>
 
 <style>
@@ -22,7 +23,7 @@ box-shadow: 0px 0px 31px 21px rgba(0,0,0,0.76);
 	class="d-flex justify-content-center align-items-center"
 	style="height: 100vh; background-image: url('images/bgIndex.jpg');background-size: cover;">
 
-<%	String e = "2";
+<%	String e = "2"; // CERRAR SESION;
 	if(e.equals(request.getParameter("estado"))) {
 		HttpSession sesion = request.getSession();
 		sesion.invalidate();
@@ -50,7 +51,6 @@ box-shadow: 0px 0px 31px 21px rgba(0,0,0,0.76);
 			</div>
 		</form>
 	</div>
-
 
 
 	<!-- JavaScript -->

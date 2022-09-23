@@ -29,4 +29,17 @@
     <servlet-name>Logout</servlet-name>
     <url-pattern>/Logout</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UsuarioServlet</display-name>
+    <servlet-name>UsuarioServlet</servlet-name>
+    <servlet-class>servlet.UsuarioServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UsuarioServlet</servlet-name>
+    <url-pattern>/usuarios/editar</url-pattern>
+    <url-pattern>/usuarios/nuevo</url-pattern>
+    <url-pattern>/usuarios/eliminar</url-pattern>
+    <url-pattern>/usuarios/get</url-pattern>
+  </servlet-mapping>
 </web-app>

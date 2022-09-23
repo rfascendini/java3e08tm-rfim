@@ -74,10 +74,11 @@ public class DataUsuario {
 				u.setNombre(rs.getString("nombre"));
 				u.setApellido(rs.getString("apellido"));
 				u.setDni(rs.getInt("dni"));
+				u.setDomicilio(rs.getString("domicilio"));
 				u.setPassword(rs.getString("password"));
 				u.setEmail(rs.getString("email"));
 				u.setTelefono(rs.getString("telefono"));
-				u.setHabilitado(rs.getInt("eliminado"));
+				u.setHabilitado(rs.getInt("habilitado"));
 				u.setEliminado(rs.getInt("eliminado"));
 			}
 		} catch (SQLException e) {
@@ -113,6 +114,7 @@ public class DataUsuario {
 				u.setNombre(rs.getString("nombre"));
 				u.setApellido(rs.getString("apellido"));
 				u.setDni(rs.getInt("dni"));
+				u.setDomicilio(rs.getString("domicilio"));
 				u.setPassword(rs.getString("password"));
 				u.setEmail(rs.getString("email"));
 				u.setTelefono(rs.getString("telefono"));

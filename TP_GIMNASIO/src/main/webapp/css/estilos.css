@@ -1,0 +1,23 @@
+.shadow-xl {
+    box-shadow: 0px 0px 25px 5px rgba(0, 0, 0, 1);
+    -webkit-box-shadow: 0px 0px 25px 5px rgba(0, 0, 0, 1);
+    -moz-box-shadow: 0px 0px 25px 5px rgba(0, 0, 0, 1);
+}
+
+body{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+footer{
+    margin-top: auto;
+}
+
+
+th, td {
+	vertical-align: middle !important;
+}
+
+thead>tr>th {
+	color: white !important
+}

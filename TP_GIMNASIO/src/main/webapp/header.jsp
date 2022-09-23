@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
   <div class="container-fluid d-flex justify-content-between">
   	<div>
-    <a class="navbar-brand" href="#">Navbar</a>
+    <a class="navbar-brand" href="http://localhost:8080/TP_GIMNASIO/menu.jsp">INICIO</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -48,9 +48,9 @@
             Usuarios
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Nuevo</a></li>
+            <li><a class="dropdown-item" href="http://localhost:8080/TP_GIMNASIO/usuarios/nuevo.jsp">Nuevo</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="usuarios/listar.jsp">Listar</a></li>
+            <li><a class="dropdown-item" href="http://localhost:8080/TP_GIMNASIO/usuarios/listar.jsp">Listar</a></li>
           </ul>
         </li>
         
@@ -69,7 +69,8 @@
       <div class="d-flex" style="align-items: center">
       	<h5 class="text-white mb-0 me-2">Hola, <%=request.getSession().getAttribute("tpjava_usuario_nombre") + " "
 		+ request.getSession().getAttribute("tpjava_usuario_apellido")%>!</h5>
-		<a href="../index.jsp?estado=2" class="btn btn-primary">Salir</a>
+		<!-- <a href="../index.jsp?estado=2" class="btn btn-primary">Salir</a> -->
+		<a href="./Logout" class="btn btn-primary">Salir</a>
       </div>
       
       

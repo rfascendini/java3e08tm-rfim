@@ -1,3 +1,7 @@
+<%
+if (request.getSession().getAttribute("tpjava_usuario_sesionIniciada") == "true") {
+%>
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="utf-8"%>
 <!DOCTYPE html>
@@ -7,35 +11,32 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/estilos.css">
 <title>MENU</title>
 
 </head>
-<body class="">
+<body>
 
 	<jsp:include page="header.jsp" />
 
-	<%
-	if (request.getSession().getAttribute("tpjava_usuario_sesionIniciada") == "true") {
-	%>
-
-
-	<div>
-		<h1 class="text-white"><%=request.getSession().getAttribute("tpjava_usuario_nombre") + " "
-		+ request.getSession().getAttribute("tpjava_usuario_apellido")%></h1>
+	<div class="container shadow-xl bg-primary mt-5 rounded-3">
+		<h1 class="p-5 text-white fw-bold">
+			¡Bienvenido
+			<%=request.getSession().getAttribute("tpjava_usuario_nombre") + " "
+		+ request.getSession().getAttribute("tpjava_usuario_apellido")%>!
+		</h1>
 	</div>
 
-	<%
-	} else {
-
-	response.sendRedirect("index.jsp?error=sesionNoIniciada");
-
-	}
-	%>
-
-
-
+	<jsp:include page="footer.jsp" />
 
 	<!-- JavaScript -->
 	<script src="js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>
+
+<%
+} else {
+response.sendRedirect("index.jsp?error=sesionNoIniciada");
+}
+%>

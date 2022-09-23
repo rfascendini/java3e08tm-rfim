@@ -1,9 +1,14 @@
 package entities;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class usuario {
+public class usuario implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	int idUsuario;
 	String nombre;
 	String apellido;
