@@ -1,17 +1,22 @@
 package entities;
 
+import java.sql.Time;
 import java.time.LocalTime;
 
 public class horarioActividad {
 
 	int idHA;
+	int idActividad;
+	int idUsuario;
 	String dia;
-	LocalTime horaComienzo;
-	LocalTime horaFin;
+	Time horaComienzo;
+	Time horaFin;
 	int cuposDisponibles;
 	
-	public horarioActividad (int idHA,String dia,LocalTime horaComienzo,LocalTime horaFin,int cuposDisponibles) {
+	public horarioActividad (int idHA, int idActividad, int idUsuario, String dia,Time horaComienzo,Time horaFin,int cuposDisponibles) {
 	this.idHA = idHA;
+	this.idActividad = idActividad;
+	this.idUsuario = idUsuario;
 	this.dia = dia;
 	this.horaComienzo = horaComienzo;
 	this.horaFin = horaFin;
@@ -33,23 +38,39 @@ public class horarioActividad {
 		return dia;
 	}
 
+	public int getIdActividad() {
+		return idActividad;
+	}
+
+	public void setIdActividad(int idActividad) {
+		this.idActividad = idActividad;
+	}
+
 	public void setDia(String dia) {
 		this.dia = dia;
 	}
 
-	public LocalTime getHoraComienzo() {
+	public Time getHoraComienzo() {
 		return horaComienzo;
 	}
 
-	public void setHoraComienzo(LocalTime horaComienzo) {
+	public void setHoraComienzo(Time horaComienzo) {
 		this.horaComienzo = horaComienzo;
 	}
 
-	public LocalTime getHoraFin() {
+	public int getIdUsuario() {
+		return idUsuario;
+	}
+
+	public void setIdUsuario(int idUsuario) {
+		this.idUsuario = idUsuario;
+	}
+
+	public Time getHoraFin() {
 		return horaFin;
 	}
 
-	public void setHoraFin(LocalTime horaFin) {
+	public void setHoraFin(Time horaFin) {
 		this.horaFin = horaFin;
 	}
 

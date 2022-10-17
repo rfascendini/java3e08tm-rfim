@@ -19,7 +19,7 @@ if (request.getSession().getAttribute("tpjava_usuario_sesionIniciada") == "true"
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="../css/bootstrap.min.css">
 <link rel="stylesheet" href="../css/estilos.css">
-<title>Listar Usuarios</title>
+<title>Listar Horarios Actividades</title>
 
 <style>
 th, td {
@@ -38,45 +38,38 @@ thead>tr>th {
 
 	<div class="container mt-5">
 
-		<table class="table p-0 table-hover bg-white shadow-xl rounded-3">
+		<table class="table p-0 table-hover bg-white shadow-xl rounded-3" style="max-width: 768">
 			<thead>
 				<tr class="bg-dark">
-					<th scope="col">ID</th>
-					<th scope="col">Nombre</th>
-					<th scope="col">Apellido</th>
-					<th scope="col">Email</th>
-					<th scope="col">Telefono</th>
-					<th scope="col">Tipo Usuario</th>
+					<th scope="col">ID HA</th>
+					<th scope="col">Actividad</th>
+					<th scope="col">Usuario</th>
+					<th scope="col">Día</th>
+					<th scope="col">Hora Comienzo</th>
+					<th scope="col">Hora Fin</th>
 					<th scope="col">Acciones</th>
 				</tr>
 			</thead>
 			<tbody>
 
 				<%
-				// CREAMOS UNA LINKED LIST DE USUARIOS
-				LinkedList<usuario> usuarios = (LinkedList<usuario>) request.getSession().getAttribute("listado_de_usuarios");
+				// CREAMOS UNA LINKED LIST DE Actividades
+				LinkedList<horarioActividad> horariosActividades = (LinkedList<horarioActividad>) request.getSession().getAttribute("listado_de_ha");
 
 				// RECORREMOS LA LINKED LIST
-				for (usuario u : usuarios) {
+				for (horarioActividad ha : horariosActividades) {
 				%>
 
 				<tr>
-					<th scope="row"><%=u.getIdUsuario()%></th>
-					<td><%=u.getNombre()%></td>
-					<td><%=u.getApellido()%></td>
-					<td><%=u.getEmail()%></td>
-					<td><%=u.getTelefono()%></td>
-					<td><%=u.getTipoUsuario()%></td>
+					<th><%=ha.getIdHA()%></th>
+					<th><%=ha.getIdActividad()%></th>
+					<td><%=ha.getIdUsuario()%></td>
+					<td><%=ha.getDia()%></td>
+					<td><%=ha.getHoraComienzo()%></td>
+					<td><%=ha.getHoraFin()%></td>
 					<td>
-						<a href="javascript:void(0)" class="btn btn-primary">Ver Información</a>	
-						<a href="editar?id=<%=u.getIdUsuario()%>" class="btn btn-warning">Editar</a> 
-						
-						<% if(u.getTipoUsuario().equals("Cliente") || u.getTipoUsuario().equals("Profesor")) { %>
-						<a href="javascript:void(0)" class="btn btn-secondary">Ver Actividades</a>
-						<% } %>
-						
-						
-						<a href="eliminar?id=<%=u.getIdUsuario()%>" class="btn btn-danger">Eliminar</a>
+						<a href="editar?id=<%=ha.getIdHA()%>" class="btn btn-warning">Editar</a> 
+						<a href="eliminar?id=<%=ha.getIdHA()%>" class="btn btn-danger">Eliminar</a>
 					</td>
 				</tr>
 

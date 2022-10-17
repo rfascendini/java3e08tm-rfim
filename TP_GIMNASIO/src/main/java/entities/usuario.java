@@ -1,6 +1,7 @@
 package entities;
 
 import java.io.Serializable;
+import java.sql.Date;
 import java.time.LocalDate;
 
 public class usuario implements Serializable {
@@ -14,15 +15,16 @@ public class usuario implements Serializable {
 	String apellido;
 	LocalDate fechaNacimiento;
 	int dni;
-	char sexo;  
+	String sexo;  
 	String domicilio;
 	String password;
 	String email;
+	String tipoUsuario;
 	String telefono;
 	int habilitado; 
 	int eliminado;
 	
-	public usuario (int idUsuario, String nombre,String apellido,LocalDate fechaNacimiento,int dni,char sexo, String domicilio,String password, String email, String telefono,int habilitado, int eliminado) {
+	public usuario (int idUsuario, String nombre,String apellido,LocalDate fechaNacimiento,int dni,String sexo, String domicilio,String password, String email,String tipoUsuario, String telefono,int habilitado, int eliminado) {
 	this.idUsuario = idUsuario;
 	this.nombre = nombre;
 	this.apellido = apellido;
@@ -32,6 +34,7 @@ public class usuario implements Serializable {
 	this.domicilio = domicilio;
 	this.password = password;
 	this.email = email;
+	this.tipoUsuario = tipoUsuario;
 	this.telefono = telefono;
 	this.habilitado = habilitado; 
 	this.eliminado = eliminado;
@@ -82,11 +85,11 @@ public class usuario implements Serializable {
 		this.dni = dni;
 	}
 
-	public char getSexo() {
+	public String getSexo() {
 		return sexo;
 	}
 
-	public void setSexo(char sexo) {
+	public void setSexo(String sexo) {
 		this.sexo = sexo;
 	}
 
@@ -136,6 +139,14 @@ public class usuario implements Serializable {
 
 	public void setEliminado(int eliminado) {
 		this.eliminado = eliminado;
+	}
+
+	public String getTipoUsuario() {
+		return tipoUsuario;
+	}
+
+	public void setTipoUsuario(String tipoUsuario) {
+		this.tipoUsuario = tipoUsuario;
 	}
 	
 	

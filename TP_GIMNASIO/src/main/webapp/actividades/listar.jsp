@@ -19,7 +19,7 @@ if (request.getSession().getAttribute("tpjava_usuario_sesionIniciada") == "true"
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="../css/bootstrap.min.css">
 <link rel="stylesheet" href="../css/estilos.css">
-<title>Listar Usuarios</title>
+<title>Listar Actividades</title>
 
 <style>
 th, td {
@@ -38,45 +38,33 @@ thead>tr>th {
 
 	<div class="container mt-5">
 
-		<table class="table p-0 table-hover bg-white shadow-xl rounded-3">
+		<table class="table p-0 table-hover bg-white shadow-xl rounded-3" style="max-width: 768">
 			<thead>
 				<tr class="bg-dark">
 					<th scope="col">ID</th>
 					<th scope="col">Nombre</th>
-					<th scope="col">Apellido</th>
-					<th scope="col">Email</th>
-					<th scope="col">Telefono</th>
-					<th scope="col">Tipo Usuario</th>
 					<th scope="col">Acciones</th>
 				</tr>
 			</thead>
 			<tbody>
 
 				<%
-				// CREAMOS UNA LINKED LIST DE USUARIOS
-				LinkedList<usuario> usuarios = (LinkedList<usuario>) request.getSession().getAttribute("listado_de_usuarios");
+				// CREAMOS UNA LINKED LIST DE Actividades
+				LinkedList<actividad> Actividades = (LinkedList<actividad>) request.getSession().getAttribute("listado_de_actividades");
 
 				// RECORREMOS LA LINKED LIST
-				for (usuario u : usuarios) {
+				for (actividad a : Actividades) {
 				%>
 
 				<tr>
-					<th scope="row"><%=u.getIdUsuario()%></th>
-					<td><%=u.getNombre()%></td>
-					<td><%=u.getApellido()%></td>
-					<td><%=u.getEmail()%></td>
-					<td><%=u.getTelefono()%></td>
-					<td><%=u.getTipoUsuario()%></td>
+					<th scope="row"><%=a.getIdActividad()%></th>
+					<td><%=a.getNombre()%></td>
 					<td>
-						<a href="javascript:void(0)" class="btn btn-primary">Ver Información</a>	
-						<a href="editar?id=<%=u.getIdUsuario()%>" class="btn btn-warning">Editar</a> 
-						
-						<% if(u.getTipoUsuario().equals("Cliente") || u.getTipoUsuario().equals("Profesor")) { %>
-						<a href="javascript:void(0)" class="btn btn-secondary">Ver Actividades</a>
-						<% } %>
-						
-						
-						<a href="eliminar?id=<%=u.getIdUsuario()%>" class="btn btn-danger">Eliminar</a>
+						<a href="editar?id=<%=a.getIdActividad()%>" class="btn btn-warning">Editar</a> 
+						<a href="javascript:void(0)" class="btn btn-secondary">Ver Clientes</a>
+						<a href="javascript:void(0)" class="btn btn-primary">Ver Profesores</a>
+						<a href="javascript:void(0)" class="btn btn-success">Ver Horarios</a>
+						<a href="eliminar?id=<%=a.getIdActividad()%>" class="btn btn-danger">Eliminar</a>
 					</td>
 				</tr>
 

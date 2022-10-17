@@ -21,9 +21,6 @@ public class CtrlLogin {
 		u.setDni(Integer.parseInt(dni));
 		u.setPassword(password);
 		
-		System.out.println(u.getDni());
-		System.out.println(u.getPassword());
-		
 		usuario u2 = new usuario();
 		
 		u2 = du.seleccionarPorUsuario(u);

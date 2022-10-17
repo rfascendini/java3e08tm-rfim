@@ -37,9 +37,48 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>UsuarioServlet</servlet-name>
+    <url-pattern></url-pattern>
     <url-pattern>/usuarios/editar</url-pattern>
+    <url-pattern>/usuarios/editarUsuario</url-pattern>
     <url-pattern>/usuarios/nuevo</url-pattern>
+    <url-pattern>/usuarios/nuevoUsuario</url-pattern>
+    <url-pattern>/usuarios/listar</url-pattern>
+    <url-pattern>/usuarios/listarUsuarios</url-pattern>
+    <url-pattern>/usuarios/listarProfesores</url-pattern>
+    <url-pattern>/usuarios/listarClientes</url-pattern>
+    <url-pattern>/usuarios/listarAdministrativos</url-pattern>
     <url-pattern>/usuarios/eliminar</url-pattern>
-    <url-pattern>/usuarios/get</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ActividadServlet</display-name>
+    <servlet-name>ActividadServlet</servlet-name>
+    <servlet-class>servlet.ActividadServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ActividadServlet</servlet-name>
+    <url-pattern>/ActividadServlet</url-pattern>
+    <url-pattern>/actividades/editar</url-pattern>
+    <url-pattern>/actividades/editarActividad</url-pattern>
+    <url-pattern>/actividades/nuevo</url-pattern>
+    <url-pattern>/actividades/nuevoActividad</url-pattern>
+    <url-pattern>/actividades/listar</url-pattern>
+    <url-pattern>/actividades/eliminar</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>HAServlet</display-name>
+    <servlet-name>HAServlet</servlet-name>
+    <servlet-class>servlet.HAServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>HAServlet</servlet-name>
+    <url-pattern>/HAServlet</url-pattern>
+    <url-pattern>/ha/editar</url-pattern>
+    <url-pattern>/ha/editarHA</url-pattern>
+    <url-pattern>/ha/nuevo</url-pattern>
+    <url-pattern>/ha/nuevoHA</url-pattern>
+    <url-pattern>/ha/listar</url-pattern>
+    <url-pattern>/ha/eliminar</url-pattern>
   </servlet-mapping>
 </web-app>

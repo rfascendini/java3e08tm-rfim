@@ -4,14 +4,15 @@ public class actividad {
 
 	int idActividad;
 	String nombre;
-	int idEmpleado;
 	String descripcion;
+	int eliminado;
 	
-	public actividad (int idActividad, String nombre, int idEmpleado, String descripcion) {
+	
+	public actividad (int idActividad, String nombre, String descripcion, int eliminado) {
 		this.idActividad = idActividad;
 		this.nombre = nombre;
-		this.idEmpleado = idEmpleado;
 		this.descripcion = descripcion;
+		this.eliminado = eliminado;
 	}
 	
 	public actividad () {
@@ -34,12 +35,14 @@ public class actividad {
 		this.nombre = nombre;
 	}
 
-	public int getIdEmpleado() {
-		return idEmpleado;
+	
+
+	public int getEliminado() {
+		return eliminado;
 	}
 
-	public void setIdEmpleado(int idEmpleado) {
-		this.idEmpleado = idEmpleado;
+	public void setEliminado(int eliminado) {
+		this.eliminado = eliminado;
 	}
 
 	public String getDescripcion() {
