@@ -1,22 +1,31 @@
 package entities;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 public class ha_cliente {
 	
 	int idHAC;
-	int idHA;
-	int idCliente; 
-	LocalDate fechaRegistro;
-	LocalDate fechaBaja;
+	public horarioActividad ha;
+	public usuario usuario; 
+	LocalDateTime fechaRegistro;
+	LocalDateTime fechaBaja;
 	
-	public ha_cliente (int idHAC,int idHA,int idCliente, LocalDate fechaRegistro,LocalDate fechaBaja) {
+	public ha_cliente (int idHAC,int idHA,int idUsuario, LocalDateTime fechaRegistro,LocalDateTime fechaBaja) {
 	this.idHAC = idHAC;
-	this.idHA = idHA;
-	this.idCliente = idCliente;
+	this.ha.setIdHA(idHA);
+	this.usuario.setIdUsuario(idUsuario);
 	this.fechaRegistro = fechaRegistro;
 	this.fechaBaja = fechaBaja;
 	}
+	
+	public ha_cliente (int idHAC, horarioActividad ha, usuario usu, LocalDateTime fechaRegistro,LocalDateTime fechaBaja) {
+		this.idHAC = idHAC;
+		this.ha = ha;
+		this.usuario = usu;
+		this.fechaRegistro = fechaRegistro;
+		this.fechaBaja = fechaBaja;
+		}
 	
 	public ha_cliente () {
 		
@@ -30,35 +39,35 @@ public class ha_cliente {
 		this.idHAC = idHAC;
 	}
 
-	public int getIdHA() {
-		return idHA;
+	public horarioActividad getHA() {
+		return ha;
 	}
 
-	public void setIdHA(int idHA) {
-		this.idHA = idHA;
+	public void setHA(horarioActividad ha) {
+		this.ha = ha;
 	}
 
-	public int getIdCliente() {
-		return idCliente;
+	public usuario getUsuario() {
+		return usuario;
 	}
 
-	public void setIdCliente(int idCliente) {
-		this.idCliente = idCliente;
+	public void setUsuario(usuario usuario) {
+		this.usuario = usuario;
 	}
 
-	public LocalDate getFechaRegistro() {
+	public LocalDateTime getFechaRegistro() {
 		return fechaRegistro;
 	}
 
-	public void setFechaRegistro(LocalDate fechaRegistro) {
+	public void setFechaRegistro(LocalDateTime fechaRegistro) {
 		this.fechaRegistro = fechaRegistro;
 	}
 
-	public LocalDate getFechaBaja() {
+	public LocalDateTime getFechaBaja() {
 		return fechaBaja;
 	}
 
-	public void setFechaBaja(LocalDate fechaBaja) {
+	public void setFechaBaja(LocalDateTime fechaBaja) {
 		this.fechaBaja = fechaBaja;
 	}
 	

@@ -1,29 +1,71 @@
 package entities;
 
-import java.sql.Time;
+
 import java.time.LocalTime;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class horarioActividad {
 
 	int idHA;
-	int idActividad;
-	int idUsuario;
 	String dia;
-	Time horaComienzo;
-	Time horaFin;
+	LocalTime horaComienzo;
+	LocalTime horaFin;
 	int cuposDisponibles;
+	int eliminado;
 	
-	public horarioActividad (int idHA, int idActividad, int idUsuario, String dia,Time horaComienzo,Time horaFin,int cuposDisponibles) {
+	//continuar
+	public actividad actividad;
+	public usuario usuario;
+	
+
+	public horarioActividad (int idHA, int idActividad, int idUsuario, String dia,LocalTime horaComienzo,LocalTime horaFin,int cuposDisponibles, int eliminado) {
 	this.idHA = idHA;
-	this.idActividad = idActividad;
-	this.idUsuario = idUsuario;
+	this.actividad.setIdActividad(idActividad);
+	this.usuario.setIdUsuario(idUsuario);
 	this.dia = dia;
 	this.horaComienzo = horaComienzo;
 	this.horaFin = horaFin;
 	this.cuposDisponibles = cuposDisponibles;
+	this.eliminado = eliminado;
+	}
+	
+	public horarioActividad (int idHA, actividad act, usuario usu, String dia,LocalTime horaComienzo,LocalTime horaFin,int cuposDisponibles, int eliminado) {
+	this.idHA = idHA;
+	this.actividad = act;
+	this.usuario = usu;
+	this.dia = dia;
+	this.horaComienzo = horaComienzo;
+	this.horaFin = horaFin;
+	this.cuposDisponibles = cuposDisponibles;
+	this.eliminado = eliminado;
 	}
 	
 	public horarioActividad() {
+	}
+	
+	public actividad getActividad() {
+		return actividad;
+	}
+
+	public void setActividad(actividad act) {
+		this.actividad = act;
+	}
+
+	public usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(usuario usu) {
+		this.usuario = usu;
+	}
+
+	public int getEliminado() {
+		return eliminado;
+	}
+
+	public void setEliminado(int eliminado) {
+		this.eliminado = eliminado;
 	}
 
 	public int getIdHA() {
@@ -38,39 +80,25 @@ public class horarioActividad {
 		return dia;
 	}
 
-	public int getIdActividad() {
-		return idActividad;
-	}
-
-	public void setIdActividad(int idActividad) {
-		this.idActividad = idActividad;
-	}
 
 	public void setDia(String dia) {
 		this.dia = dia;
 	}
 
-	public Time getHoraComienzo() {
+	public LocalTime getHoraComienzo() {
 		return horaComienzo;
 	}
 
-	public void setHoraComienzo(Time horaComienzo) {
+	public void setHoraComienzo(LocalTime horaComienzo) {
 		this.horaComienzo = horaComienzo;
 	}
 
-	public int getIdUsuario() {
-		return idUsuario;
-	}
 
-	public void setIdUsuario(int idUsuario) {
-		this.idUsuario = idUsuario;
-	}
-
-	public Time getHoraFin() {
+	public LocalTime getHoraFin() {
 		return horaFin;
 	}
 
-	public void setHoraFin(Time horaFin) {
+	public void setHoraFin(LocalTime horaFin) {
 		this.horaFin = horaFin;
 	}
 
@@ -81,6 +109,7 @@ public class horarioActividad {
 	public void setCuposDisponibles(int cuposDisponibles) {
 		this.cuposDisponibles = cuposDisponibles;
 	}
+
 	
 	
 }

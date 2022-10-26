@@ -3,34 +3,32 @@ package logic;
 import logic.*;
 import entities.*;
 import data.*;
-
-import java.util.Arrays;
 import java.util.LinkedList;
 
 public class CtrlHA {
 
-	private DataHA da = new DataHA();
+	private DataHA dha = new DataHA();
 
 	public LinkedList<horarioActividad> listarHA() {
 		
 		LinkedList<horarioActividad> listaActividades = new LinkedList<horarioActividad>();
 		
-		listaActividades = da.listarHA();
+		listaActividades = dha.listarHA();
 		
 		return listaActividades;
 			
 	}
 	
 	
-	public horarioActividad getActividad(int idActividad) {
+	public horarioActividad getHA(int idHA) {
 
 		horarioActividad ha = new horarioActividad();
 
-		ha.setIdHA(idActividad);
+		ha.setIdHA(idHA);
 
 		horarioActividad a2 = new horarioActividad();
 
-		a2 = da.seleccionarPorID(ha);
+		a2 = dha.seleccionarPorID(ha);
 
 
 		if (a2 != null) {
@@ -40,28 +38,28 @@ public class CtrlHA {
 		}
 	}
 
-	public int nuevoActividad(horarioActividad ha) {
+	public int nuevoHA(horarioActividad ha) {
 
-		int nuevoActividad = da.nuevoHA(ha);
+		int nuevoActividad = dha.nuevoHA(ha);
 
 		return nuevoActividad;
 
 	}
 	
 
-	public int editarActividad(horarioActividad ha) {
+	public int editarHA(horarioActividad ha) {
 
-		int editarActividad = da.editarHA(ha);
+		int editarActividad = dha.editarHA(ha);
 
 		return editarActividad;
 
 	}
 
-	public int eliminarActividad(horarioActividad ha) {
+	public int eliminarHA(horarioActividad ha) {
 
-		int eliminarActividad = da.eliminarHA(ha);
+		int eliminarHA = dha.eliminarHA(ha);
 
-		return eliminarActividad;
+		return eliminarHA;
 
 	}
 

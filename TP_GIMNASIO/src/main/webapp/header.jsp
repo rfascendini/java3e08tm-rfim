@@ -15,7 +15,7 @@
             Actividades
           </a>
           <ul class=" dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Nuevo</a></li>
+            <li><a class="dropdown-item" href="<%=request.getContextPath()%>/actividades/nuevo">Nuevo</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="<%=request.getContextPath()%>/actividades/listar">Listar</a></li>
           </ul>
@@ -26,7 +26,7 @@
             Horarios Actividades
           </a>
           <ul class=" dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Nuevo</a></li>
+            <li><a class="dropdown-item" href="<%=request.getContextPath()%>/ha/nuevo">Nuevo</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="<%=request.getContextPath()%>/ha/listar">Listar</a></li>
           </ul>
@@ -49,6 +49,7 @@
           </ul>
         </li>
         
+        <!-- 
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Cuotas
@@ -56,7 +57,7 @@
           <ul class=" dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
             <li><a class="dropdown-item" href="#">Registrar Pago</a></li>
           </ul>
-        </li>
+        </li> -->
         
       </ul>
       

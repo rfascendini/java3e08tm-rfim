@@ -19,6 +19,7 @@ if (request.getSession().getAttribute("tpjava_usuario_sesionIniciada") == "true"
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="../css/bootstrap.min.css">
 <link rel="stylesheet" href="../css/estilos.css">
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <title>Listar Actividades</title>
 
 <style>
@@ -33,6 +34,27 @@ thead>tr>th {
 
 </head>
 <body class="bg-info">
+
+	<% 
+	if(request.getSession().getAttribute("action_result_status") == "1") { %>
+		<script>
+			Swal.fire({
+			  icon: 'success',
+			  title: '<%=request.getSession().getAttribute("action_result_message") %>',
+			})
+		</script>
+	<% } else if(request.getSession().getAttribute("action_result_status") == "0") { %>
+		<script>
+		Swal.fire({
+			icon : 'error',
+			title : 'Oops...',
+			text : '<%=request.getSession().getAttribute("action_result_message") %>',
+		})
+		</script>
+	<% } 
+	request.getSession().setAttribute("action_result_status",null);
+	request.getSession().setAttribute("action_result_message",null);
+	%>
 
 	<jsp:include page="../header.jsp" />
 

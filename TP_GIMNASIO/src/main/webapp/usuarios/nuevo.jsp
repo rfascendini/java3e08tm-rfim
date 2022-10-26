@@ -33,16 +33,28 @@ if (request.getSession().getAttribute("tpjava_usuario_sesionIniciada") == "true"
 				<div class="row g-3">
 				
 					<input type="hidden" name="accion" value="nuevo">
+					
+					<div class="col-12">
+						<label for="tipoUsuario" class="form-label">TIPO DE USUARIO</label> 
+						<select class="form-control" name="tipoUsuario" id="tipoUsuario" required>
+							<option value="" selected disabled>Seleccione una opción...</option>
+							<option value="Profesor">Profesor</option>
+							<option value="Cliente">Cliente</option>
+							<option value="Administrativo">Administrativo</option>
+							<option value="Admin">Supervisor</option>
+						</select>
+						<div class="invalid-feedback">Se requiere un TIPO DE USUARIO válido</div>
+					</div>
 				
 					<div class="col-md-6 col-lg-3">
 						<label for="nombre" class="form-label">NOMBRE</label> 
-						<input type="text" class="form-control" name="nombre" id="nombre" placeholder="">
+						<input type="text" class="form-control" name="nombre" id="nombre" placeholder="" required>
 						<div class="invalid-feedback">Se requiere un NOMBRE válido</div>
 					</div>
 	
 					<div class="col-md-6 col-lg-3">
 						<label for="lastName" class="form-label">APELLIDO</label> 
-						<input type="text" class="form-control" name="apellido" id="apellido" placeholder="">
+						<input type="text" class="form-control" name="apellido" id="apellido" placeholder="" required>
 						<div class="invalid-feedback">Se requiere un APELLIDO válido</div>
 					</div>
 	
@@ -54,13 +66,13 @@ if (request.getSession().getAttribute("tpjava_usuario_sesionIniciada") == "true"
 	
 					<div class="col-md-4 col-lg-2">
 						<label for="dni" class="form-label">DNI</label> 
-						<input type="number" class="form-control" name="dni" id="dni" placeholder="">
+						<input type="number" class="form-control" name="dni" id="dni" placeholder="" required>
 						<div class="invalid-feedback">Se requiere un DNI válido</div>
 					</div>
 					
 					<div class="col-md-4 col-lg-2">
 						<label for="sexo" class="form-label">SEXO</label> 
-						<select class="form-select" id="sexo" name="sexo">
+						<select class="form-select" id="sexo" name="sexo" required>
 							<option value="" selected disabled>Seleccione...</option>
 							<option value="F">Femenino</option>
 							<option value="M">Masculino</option>
@@ -71,25 +83,25 @@ if (request.getSession().getAttribute("tpjava_usuario_sesionIniciada") == "true"
 					
 					<div class="col-md-6 col-lg-3">
 						<label for="password" class="form-label">PASSWORD</label> 
-						<input type="text" class="form-control" name="password" id="password" placeholder="">
+						<input type="text" class="form-control" name="password" id="password" placeholder="" required>
 						<div class="invalid-feedback">Se requiere un PASSWORD válido</div>
 					</div>
 						
 					<div class="col-md-6 col-lg-3">
 						<label for="domicilio" class="form-label">DOMICILIO</label> 
-						<input type="text" class="form-control" name="domicilio" id="domicilio" placeholder="">
+						<input type="text" class="form-control" name="domicilio" id="domicilio" placeholder="" required>
 						<div class="invalid-feedback">Se requiere un DOMICILIO válido</div>
 					</div>
 	
 					<div class="col-md-6 col-lg-3">
 						<label for="telefono" class="form-label">TELÉFONO</label> 
-						<input type="number" class="form-control" name="telefono" id="telefono" placeholder="">
+						<input type="number" class="form-control" name="telefono" id="telefono" placeholder="" required>
 						<div class="invalid-feedback">Se requiere un TELÉFONO válido</div>
 					</div>
 
 					<div class="col-md-12 col-lg-3">
 						<label for="email" class="form-label">EMAIL</label> 
-						<input type="email" class="form-control" name="email" id="email" placeholder="">
+						<input type="email" class="form-control" name="email" id="email" placeholder="" required>
 						<div class="invalid-feedback">Se requiere un EMAIL válido</div>
 					</div>
 	

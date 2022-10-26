@@ -154,7 +154,7 @@ public class DataUsuario {
 		ResultSet rs = null;
 
 		try {
-			stmt = DbConnector.getInstancia().conectar().prepareStatement("insert into usuarios (nombre, apellido, dni, sexo, domicilio, password, email, tipoUsuario telefono, habilitado, eliminado) "+ "values(?,?,?,?,?,?,?,?,?,?,?)",
+			stmt = DbConnector.getInstancia().conectar().prepareStatement("insert into usuarios (nombre, apellido, dni, sexo, domicilio, password, email, tipoUsuario, telefono, habilitado, eliminado) "+ "values(?,?,?,?,?,?,?,?,?,?,?)",
 					Statement.RETURN_GENERATED_KEYS);
 			stmt.setString(1, newUsuario.getNombre());
 			stmt.setString(2, newUsuario.getApellido());

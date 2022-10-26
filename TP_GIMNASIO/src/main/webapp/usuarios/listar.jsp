@@ -68,11 +68,10 @@ thead>tr>th {
 					<td><%=u.getTelefono()%></td>
 					<td><%=u.getTipoUsuario()%></td>
 					<td>
-						<a href="javascript:void(0)" class="btn btn-primary">Ver Información</a>	
 						<a href="editar?id=<%=u.getIdUsuario()%>" class="btn btn-warning">Editar</a> 
 						
 						<% if(u.getTipoUsuario().equals("Cliente") || u.getTipoUsuario().equals("Profesor")) { %>
-						<a href="javascript:void(0)" class="btn btn-secondary">Ver Actividades</a>
+						<a href="javascript:void(0)" class="btn btn-primary">Ver Actividades</a>
 						<% } %>
 						
 						

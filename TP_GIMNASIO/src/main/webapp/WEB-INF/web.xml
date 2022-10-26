@@ -81,4 +81,14 @@
     <url-pattern>/ha/listar</url-pattern>
     <url-pattern>/ha/eliminar</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>HAClienteServlet</display-name>
+    <servlet-name>HAClienteServlet</servlet-name>
+    <servlet-class>servlet.HAClienteServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>HAClienteServlet</servlet-name>
+    <url-pattern>/HAClienteServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

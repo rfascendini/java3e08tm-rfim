@@ -77,25 +77,25 @@ thead>tr>th {
 				
 					<div class="col-md-6 col-lg-3">
 						<label for="nombre" class="form-label">NOMBRE</label> 
-						<input type="text" class="form-control" name="nombre" id="nombre" placeholder="" value="<%=u.getNombre()%>">
+						<input type="text" class="form-control" name="nombre" id="nombre" placeholder="" value="<%=u.getNombre()%>" required>
 						<div class="invalid-feedback">Se requiere un NOMBRE válido</div>
 					</div>
 	
 					<div class="col-md-6 col-lg-3">
 						<label for="lastName" class="form-label">APELLIDO</label> 
-						<input type="text" class="form-control" name="apellido" id="apellido" placeholder="" value="<%=u.getApellido()%>">
+						<input type="text" class="form-control" name="apellido" id="apellido" placeholder="" value="<%=u.getApellido()%>" required>
 						<div class="invalid-feedback">Se requiere un APELLIDO válido</div>
 					</div>
 	
 					<div class="col-md-4 col-lg-2">
 						<label for="fechaNacimiento" class="form-label">FEC. NAC.</label>
-						<input type="date" class="form-control" name="fechaNacimiento" id="fechaNacimiento" placeholder="" value="">
+						<input type="date" class="form-control" name="fechaNacimiento" id="fechaNacimiento" placeholder="" value="" >
 						<div class="invalid-feedback">Se requiere una FECHA NAC. válida</div>
 					</div>
 	
 					<div class="col-md-4 col-lg-2">
 						<label for="dni" class="form-label">DNI</label> 
-						<input type="text" class="form-control" name="dni" id="dni" placeholder="" value="<%=u.getDni()%>">
+						<input type="text" class="form-control" name="dni" id="dni" placeholder="" value="<%=u.getDni()%>" required>
 						<div class="invalid-feedback">Se requiere un DNI válido</div>
 					</div>
 					
@@ -112,25 +112,25 @@ thead>tr>th {
 					
 					<div class="col-md-12 col-lg-3">
 						<label for="password" class="form-label">PASSWORD</label> 
-						<input type="text" class="form-control" name="password" id="password" value="<%=u.getPassword()%>" placeholder="">
+						<input type="text" class="form-control" name="password" id="password" value="<%=u.getPassword()%>" placeholder="" required>
 						<div class="invalid-feedback">Se requiere un PASSWORD válido</div>
 					</div>
 						
 					<div class="col-md-6 col-lg-3">
 						<label for="domicilio" class="form-label">DOMICILIO</label> 
-						<input type="text" class="form-control" name="domicilio" id="domicilio" placeholder="" value="<%=u.getDomicilio()%>">
+						<input type="text" class="form-control" name="domicilio" id="domicilio" placeholder="" value="<%=u.getDomicilio()%>" required>
 						<div class="invalid-feedback">Se requiere un DOMICILIO válido</div>
 					</div>
 	
 					<div class="col-md-6 col-lg-3">
 						<label for="telefono" class="form-label">TELÉFONO</label> 
-						<input type="text" class="form-control" name="telefono" id="telefono" placeholder="" value="<%=u.getTelefono()%>">
+						<input type="text" class="form-control" name="telefono" id="telefono" placeholder="" value="<%=u.getTelefono()%>" required>
 						<div class="invalid-feedback">Se requiere un TELÉFONO válido</div>
 					</div>
 
 					<div class="col-md-12 col-lg-3">
 						<label for="email" class="form-label">EMAIL</label> 
-						<input type="email" class="form-control" name="email" id="email" placeholder="" value="<%=u.getEmail()%>">
+						<input type="email" class="form-control" name="email" id="email" placeholder="" value="<%=u.getEmail()%>" required>
 						<div class="invalid-feedback">Se requiere un EMAIL válido</div>
 					</div>
 	
@@ -147,7 +147,7 @@ thead>tr>th {
 		
 		
 		<div class="text-center mt-5">
-				<a href="listar.jsp" class="btn btn-danger btn-lg">VOLVER</a>
+				<a href="<%=request.getContextPath()%>/usuarios/listar" class="btn btn-danger btn-lg">VOLVER</a>
 		</div>
 
 	</div>

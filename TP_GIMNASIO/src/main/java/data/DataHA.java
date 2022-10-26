@@ -5,14 +5,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalTime;
 import java.util.LinkedList;
 import entities.*;
 
 public class DataHA {
 
-	
-	
-	
 	public LinkedList<horarioActividad> listarHA() {
 		Statement stmt = null;
 		ResultSet rs = null;
@@ -20,20 +18,26 @@ public class DataHA {
 
 		try {
 			stmt = DbConnector.getInstancia().conectar().createStatement();
-			rs = stmt.executeQuery("select * from horariosactividades");
+			rs = stmt.executeQuery("SELECT ha.*," + "CONCAT(u.apellido,', ',u.nombre) as 'apeNomUsuario', "
+					+ "a.nombre as 'nombreActividad' " + "FROM horariosactividades ha "
+					+ "INNER JOIN actividades a ON a.idActividad = ha.idActividad "
+					+ "INNER JOIN usuarios u ON u.idUsuario = ha.idUsuario "
+					+ "WHERE ha.eliminado = 0");
 			if (rs != null) {
 				while (rs.next()) {
-					horarioActividad r = new horarioActividad();
-
-					r.setIdHA(rs.getInt("idHA"));
-					r.setIdActividad(rs.getInt("idActividad"));
-					r.setIdUsuario(rs.getInt("idUsuario"));
-					r.setDia(rs.getString("dia"));
-					r.setHoraComienzo(rs.getTime("horaComienzo"));
-					r.setHoraFin(rs.getTime("horaFin"));
-					r.setCuposDisponibles(rs.getInt("cuposDisponibles"));
-
-					HorariosHAes.add(r);
+					horarioActividad ha = new horarioActividad();
+					ha.setActividad(new actividad());
+					ha.setUsuario(new usuario());
+					ha.setIdHA(rs.getInt("idHA"));
+					ha.getActividad().setIdActividad(rs.getInt("idActividad"));
+					ha.getActividad().setNombre(rs.getString("nombreActividad")); 								
+					ha.getUsuario().setIdUsuario(rs.getInt("idUsuario"));
+					ha.getUsuario().setNombre(rs.getString("apeNomUsuario"));
+					ha.setDia(rs.getString("dia"));
+					ha.setHoraComienzo(rs.getObject("horaComienzo",LocalTime.class));
+					ha.setHoraFin(rs.getObject("horaFin",LocalTime.class));
+					ha.setCuposDisponibles(rs.getInt("cuposDisponibles"));
+					HorariosHAes.add(ha);
 				}
 			}
 
@@ -56,25 +60,30 @@ public class DataHA {
 
 		return HorariosHAes;
 	}
-	
-	
 
 	public horarioActividad seleccionarPorID(horarioActividad HABuscado) {
 		horarioActividad ha = null;
+		
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		try {
 			stmt = DbConnector.getInstancia().conectar()
-					.prepareStatement("SELECT * FROM horarioActividades WHERE idHA=? AND eliminado=0");
+					.prepareStatement("SELECT * FROM horariosactividades WHERE idHA = ? and eliminado=0");
 			stmt.setInt(1, HABuscado.getIdHA());
 			rs = stmt.executeQuery();
 			if (rs != null && rs.next()) {
 				ha = new horarioActividad();
+				ha.setActividad(new actividad());
+				ha.setUsuario(new usuario());
 				ha.setIdHA(rs.getInt("idHA"));
-				ha.setDia(rs.getString("nombre"));
-				ha.setHoraComienzo(rs.getTime("descripcion"));
-				ha.setHoraFin(rs.getTime("descripcion"));
-				ha.setCuposDisponibles(rs.getInt("descripcion"));
+				ha.getActividad().setIdActividad(rs.getInt("idActividad"));
+				ha.getUsuario().setIdUsuario(rs.getInt("idUsuario"));
+				ha.setDia(rs.getString("dia"));
+				ha.setHoraComienzo(rs.getObject("horaComienzo",LocalTime.class));
+				ha.setHoraFin(rs.getObject("horaFin",LocalTime.class));
+
+				
+				ha.setCuposDisponibles(rs.getInt("cuposDisponibles"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -101,24 +110,29 @@ public class DataHA {
 		ResultSet rs = null;
 
 		try {
-			stmt = DbConnector.getInstancia().conectar().prepareStatement("insert into horariosactividades (idActividad, idUsuario, dia, horaComienzo, horaFin, cuposDisponibles) "+ "values(?,?,?,?,?,?)",
+			stmt = DbConnector.getInstancia().conectar().prepareStatement(
+					"insert into horariosactividades (idActividad, idUsuario, dia, horaComienzo, horaFin, cuposDisponibles) "
+							+ "values(?,?,?,?,?,?)",
 					Statement.RETURN_GENERATED_KEYS);
-			stmt.setInt(1, newHA.getIdActividad());
-			stmt.setInt(2, newHA.getIdUsuario());
+
+			stmt.setInt(1, newHA.getActividad().getIdActividad());
+			stmt.setInt(2, newHA.getUsuario().getIdUsuario());
 			stmt.setString(3, newHA.getDia());
-			stmt.setTime(4, newHA.getHoraComienzo());
-			stmt.setTime(5, newHA.getHoraFin());
+			
+			stmt.setObject(4, newHA.getHoraComienzo());
+			stmt.setObject(5, newHA.getHoraFin());
+
 			stmt.setInt(6, newHA.getCuposDisponibles());
 
 			stmt.executeUpdate();
-			
+
 			return 1;
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-			
+
 			return 0;
-			
+
 		} finally {
 			try {
 				if (rs != null)
@@ -129,25 +143,26 @@ public class DataHA {
 				e.printStackTrace();
 			}
 		}
-		
+
 	}
 
 	public int eliminarHA(horarioActividad delHA) {
 		PreparedStatement stmt = null;
 
 		try {
-			stmt = DbConnector.getInstancia().conectar().prepareStatement("update horariosactividades "+ "set eliminado = 1 " + "where idHA = ?");
+			stmt = DbConnector.getInstancia().conectar()
+					.prepareStatement("UPDATE horariosactividades " + "SET eliminado = 1 " + "WHERE idHA = ?");
 			stmt.setInt(1, delHA.getIdHA());
 
 			stmt.executeUpdate();
-			
+
 			return 1;
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-			
+
 			return 0;
-			
+
 		} finally {
 			try {
 				if (stmt != null)
@@ -162,24 +177,27 @@ public class DataHA {
 		PreparedStatement stmt = null;
 
 		try {
-			stmt = DbConnector.getInstancia().conectar().prepareStatement("update horariosactividades "+ "set idActividad = ?, idUsuario = ?, dia = ?, horaComienzo = ?, horaFin = ?, cuposDisponibles = ? " + "where idHA = ?");
-			stmt.setInt(1, updHA.getIdActividad());
-			stmt.setInt(2, updHA.getIdUsuario());
+			stmt = DbConnector.getInstancia().conectar().prepareStatement("UPDATE horariosactividades "
+					+ "SET idActividad = ?, idUsuario = ?, dia = ?, horaComienzo = ?, horaFin = ?, cuposDisponibles = ? "
+					+ "WHERE idHA = ?");
+			stmt.setInt(1, updHA.getActividad().getIdActividad());
+			stmt.setInt(2, updHA.getUsuario().getIdUsuario());
 			stmt.setString(3, updHA.getDia());
-			stmt.setTime(4, updHA.getHoraComienzo());
-			stmt.setTime(5, updHA.getHoraFin());
+			stmt.setObject(4, updHA.getHoraComienzo());
+			stmt.setObject(5, updHA.getHoraFin());
 			stmt.setInt(6, updHA.getCuposDisponibles());
+			
 			stmt.setInt(7, updHA.getIdHA());
 
 			stmt.executeUpdate();
-			
+
 			return 1;
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-			
+
 			return 0;
-			
+
 		} finally {
 			try {
 				if (stmt != null)
@@ -188,8 +206,7 @@ public class DataHA {
 				e.printStackTrace();
 			}
 		}
-		
-	}
-	
-}
 
+	}
+
+}

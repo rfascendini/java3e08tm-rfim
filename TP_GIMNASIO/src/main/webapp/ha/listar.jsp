@@ -1,4 +1,6 @@
 
+<%@page import="java.time.ZoneId"%>
+<%@page import="java.time.format.DateTimeFormatter"%>
 <%
 if (request.getSession().getAttribute("tpjava_usuario_sesionIniciada") == "true") {
 %>
@@ -19,26 +21,40 @@ if (request.getSession().getAttribute("tpjava_usuario_sesionIniciada") == "true"
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="../css/bootstrap.min.css">
 <link rel="stylesheet" href="../css/estilos.css">
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <title>Listar Horarios Actividades</title>
-
-<style>
-th, td {
-	vertical-align: middle !important;
-}
-
-thead>tr>th {
-	color: white !important
-}
-</style>
 
 </head>
 <body class="bg-info">
+
+	<% 
+	if(request.getSession().getAttribute("action_result_status") == "1") { %>
+		<script>
+			Swal.fire({
+			  icon: 'success',
+			  title: '<%=request.getSession().getAttribute("action_result_message") %>',
+			})
+		</script>
+	<% } else if(request.getSession().getAttribute("action_result_status") == "0") { %>
+		<script>
+		Swal.fire({
+			icon : 'error',
+			title : 'Oops...',
+			text : '<%=request.getSession().getAttribute("action_result_message") %>',
+		})
+		</script>
+	<% } 
+	request.getSession().setAttribute("action_result_status",null);
+	request.getSession().setAttribute("action_result_message",null);
+	%>
+	
 
 	<jsp:include page="../header.jsp" />
 
 	<div class="container mt-5">
 
-		<table class="table p-0 table-hover bg-white shadow-xl rounded-3" style="max-width: 768">
+		<table class="table p-0 table-hover bg-white shadow-xl rounded-3"
+			style="max-width: 768">
 			<thead>
 				<tr class="bg-dark">
 					<th scope="col">ID HA</th>
@@ -55,6 +71,7 @@ thead>tr>th {
 				<%
 				// CREAMOS UNA LINKED LIST DE Actividades
 				LinkedList<horarioActividad> horariosActividades = (LinkedList<horarioActividad>) request.getSession().getAttribute("listado_de_ha");
+				DateTimeFormatter dtFormat = DateTimeFormatter.ofPattern("HH:mm:ss");
 
 				// RECORREMOS LA LINKED LIST
 				for (horarioActividad ha : horariosActividades) {
@@ -62,13 +79,14 @@ thead>tr>th {
 
 				<tr>
 					<th><%=ha.getIdHA()%></th>
-					<th><%=ha.getIdActividad()%></th>
-					<td><%=ha.getIdUsuario()%></td>
+					<th><%=ha.getActividad().getNombre()%></th>
+					<td><%=ha.getUsuario().getNombre()%></td>
 					<td><%=ha.getDia()%></td>
-					<td><%=ha.getHoraComienzo()%></td>
-					<td><%=ha.getHoraFin()%></td>
+					<td><%=ha.getHoraComienzo().format(dtFormat.withZone(ZoneId.of("UTC-3")))%></td>
+					<td><%=ha.getHoraFin().format(dtFormat.withZone(ZoneId.of("UTC-3")))%></td>
 					<td>
-						<a href="editar?id=<%=ha.getIdHA()%>" class="btn btn-warning">Editar</a> 
+						<a href="editar?id=<%=ha.getIdHA()%>" class="btn btn-warning">Editar</a>
+						<a href="javascript:void(0)" class="btn btn-primary">Ver Actividades</a>
 						<a href="eliminar?id=<%=ha.getIdHA()%>" class="btn btn-danger">Eliminar</a>
 					</td>
 				</tr>
