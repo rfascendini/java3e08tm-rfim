@@ -86,7 +86,7 @@ if (request.getSession().getAttribute("tpjava_usuario_sesionIniciada") == "true"
 					<td><%=ha.getHoraFin().format(dtFormat.withZone(ZoneId.of("UTC-3")))%></td>
 					<td>
 						<a href="editar?id=<%=ha.getIdHA()%>" class="btn btn-warning">Editar</a>
-						<a href="javascript:void(0)" class="btn btn-primary">Ver Actividades</a>
+						<a href="javascript:void(0)" class="btn btn-primary">Ver Clientes</a>
 						<a href="eliminar?id=<%=ha.getIdHA()%>" class="btn btn-danger">Eliminar</a>
 					</td>
 				</tr>

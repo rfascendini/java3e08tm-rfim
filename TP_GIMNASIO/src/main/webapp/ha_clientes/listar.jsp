@@ -1,4 +1,6 @@
 
+<%@page import="java.time.ZoneId"%>
+<%@page import="java.time.format.DateTimeFormatter"%>
 <%
 if (request.getSession().getAttribute("tpjava_usuario_sesionIniciada") == "true") {
 %>
@@ -20,17 +22,7 @@ if (request.getSession().getAttribute("tpjava_usuario_sesionIniciada") == "true"
 <link rel="stylesheet" href="../css/bootstrap.min.css">
 <link rel="stylesheet" href="../css/estilos.css">
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<title>Listar Actividades</title>
-
-<style>
-th, td {
-	vertical-align: middle !important;
-}
-
-thead>tr>th {
-	color: white !important
-}
-</style>
+<title>Listar Horarios Actividades y Clientes</title>
 
 </head>
 <body class="bg-info">
@@ -55,37 +47,48 @@ thead>tr>th {
 	request.getSession().setAttribute("action_result_status",null);
 	request.getSession().setAttribute("action_result_message",null);
 	%>
+	
 
 	<jsp:include page="../header.jsp" />
 
 	<div class="container mt-5">
 
-		<table class="table p-0 table-hover bg-white shadow-xl rounded-3" style="max-width: 768">
+		<table class="table p-0 table-hover bg-white shadow-xl rounded-3"
+			style="max-width: 768">
 			<thead>
 				<tr class="bg-dark">
-					<th scope="col">ID</th>
-					<th scope="col">Nombre</th>
+					<th scope="col">ID HAC</th>
+					<th scope="col">Actividad</th>
+					<th scope="col">Dia</th>
+					<th scope="col">Hs Comienzo</th>
+					<th scope="col">Hs Fin</th>
+					<th scope="col">Cliente</th>
+					<th scope="col">Fecha Registro</th>
 					<th scope="col">Acciones</th>
 				</tr>
 			</thead>
-			<tbody>
-
+			
 				<%
 				// CREAMOS UNA LINKED LIST DE Actividades
-				LinkedList<actividad> Actividades = (LinkedList<actividad>) request.getSession().getAttribute("listado_de_actividades");
+				LinkedList<ha_cliente> hacs = (LinkedList<ha_cliente>) request.getSession().getAttribute("listado_de_hac");
+				DateTimeFormatter dtFormat = DateTimeFormatter.ofPattern("HH:mm:ss");
+				DateTimeFormatter dtFormat2 = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
 
 				// RECORREMOS LA LINKED LIST
-				for (actividad a : Actividades) {
+				for (ha_cliente hac : hacs) {
 				%>
 
 				<tr>
-					<th scope="row"><%=a.getIdActividad()%></th>
-					<td><%=a.getNombre()%></td>
+					<td><%=hac.getIdHAC()%></td>
+					<td><%=hac.getHA().getActividad().getNombre()%></td>
+					<td><%=hac.getHA().getDia()%></td>
+					<td><%=hac.getHA().getHoraComienzo().format(dtFormat.withZone(ZoneId.of("UTC-3")))%></td>
+					<td><%=hac.getHA().getHoraFin().format(dtFormat.withZone(ZoneId.of("UTC-3")))%></td>
+					<td><%=hac.getUsuario().getNombre()%></td>
+					<td><%=hac.getFechaRegistro().format(dtFormat2.withZone(ZoneId.of("UTC-3")))%></td>
 					<td>
-						<a href="editar?id=<%=a.getIdActividad()%>" class="btn btn-warning">Editar</a> 
-						<a href="../ha_clientes/listarPorActividad?id=<%=a.getIdActividad()%>" class="btn btn-secondary">Ver Clientes</a>
-						<a href="../ha/listarPorActividad?id=<%=a.getIdActividad()%>" class="btn btn-success">Ver Horarios</a>
-						<a href="eliminar?id=<%=a.getIdActividad()%>" class="btn btn-danger">Eliminar</a>
+						<a href="darDeBaja?id=<%=hac.getIdHAC()%>" class="btn btn-warning">Dar de Baja</a>
+						<a href="eliminar?id=<%=hac.getIdHAC()%>" class="btn btn-danger">Eliminar</a>
 					</td>
 				</tr>
 
@@ -101,9 +104,10 @@ thead>tr>th {
 
 	<jsp:include page="../footer.jsp" />
 
-
+	
 
 	<!-- JavaScript -->
+
 	<script src="../js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

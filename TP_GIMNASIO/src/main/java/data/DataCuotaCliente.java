@@ -8,16 +8,17 @@ import java.util.LinkedList;
 
 import entities.cuota;
 
-public class DataCuota {
+public class DataCuotaCliente {
 
-	public LinkedList<cuota> listarCuotas() {
+	
+	public LinkedList<cuota> listarCuotasClientes() {
 		Statement stmt = null;
 		ResultSet rs = null;
 		LinkedList<cuota> Cuotas = new LinkedList<>();
 
 		try {
 			stmt = DbConnector.getInstancia().conectar().createStatement();
-			rs = stmt.executeQuery("select * from cuotas");
+			rs = stmt.executeQuery("SELECT * FROM cuotas_clientes cc INNER JOIN ");
 			if (rs != null) {
 				while (rs.next()) {
 					cuota c = new cuota();
@@ -51,7 +52,48 @@ public class DataCuota {
 		return Cuotas;
 	}
 	
-	public LinkedList<cuota> listarCuotasParaClientes() {
+	public LinkedList<cuota> listarCuotasPorCliente() {
+		Statement stmt = null;
+		ResultSet rs = null;
+		LinkedList<cuota> Cuotas = new LinkedList<>();
+
+		try {
+			stmt = DbConnector.getInstancia().conectar().createStatement();
+			rs = stmt.executeQuery("select * from cuotas where monto is not null");
+			if (rs != null) {
+				while (rs.next()) {
+					cuota c = new cuota();
+
+					c.setIdCuota(rs.getInt("idCuota"));
+					c.setAnio(rs.getInt("año"));
+					c.setMes(rs.getInt("mes"));
+					c.setMonto(rs.getInt("monto"));
+
+					Cuotas.add(c);
+				}
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+
+		} finally {
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+				if (stmt != null) {
+					stmt.close();
+				}
+				DbConnector.getInstancia().desconectar();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+		return Cuotas;
+	}
+	
+	public LinkedList<cuota> listarCuotasPorCuota(cuota cuota) {
 		Statement stmt = null;
 		ResultSet rs = null;
 		LinkedList<cuota> Cuotas = new LinkedList<>();
@@ -156,5 +198,8 @@ public class DataCuota {
 
 		return r;
 	}
+	
+	
+	
 	
 }

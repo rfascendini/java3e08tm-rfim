@@ -10,16 +10,35 @@ public class CtrlHA {
 	private DataHA dha = new DataHA();
 
 	public LinkedList<horarioActividad> listarHA() {
-		
+
 		LinkedList<horarioActividad> listaActividades = new LinkedList<horarioActividad>();
-		
+
 		listaActividades = dha.listarHA();
-		
+
 		return listaActividades;
-			
+
 	}
-	
-	
+
+	public LinkedList<horarioActividad> listarHAporProfesor(int idDocente) {
+
+		LinkedList<horarioActividad> listaActividades = new LinkedList<horarioActividad>();
+
+		listaActividades = dha.listarHAporProfesor(idDocente);
+
+		return listaActividades;
+
+	}
+
+	public LinkedList<horarioActividad> listarHAporActividad(int idActividad) {
+
+		LinkedList<horarioActividad> listaActividades = new LinkedList<horarioActividad>();
+
+		listaActividades = dha.listarHAporActividad(idActividad);
+
+		return listaActividades;
+
+	}
+
 	public horarioActividad getHA(int idHA) {
 
 		horarioActividad ha = new horarioActividad();
@@ -29,7 +48,6 @@ public class CtrlHA {
 		horarioActividad a2 = new horarioActividad();
 
 		a2 = dha.seleccionarPorID(ha);
-
 
 		if (a2 != null) {
 			return a2;
@@ -45,7 +63,6 @@ public class CtrlHA {
 		return nuevoActividad;
 
 	}
-	
 
 	public int editarHA(horarioActividad ha) {
 

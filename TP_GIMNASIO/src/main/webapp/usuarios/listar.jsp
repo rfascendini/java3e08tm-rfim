@@ -70,8 +70,13 @@ thead>tr>th {
 					<td>
 						<a href="editar?id=<%=u.getIdUsuario()%>" class="btn btn-warning">Editar</a> 
 						
-						<% if(u.getTipoUsuario().equals("Cliente") || u.getTipoUsuario().equals("Profesor")) { %>
-						<a href="javascript:void(0)" class="btn btn-primary">Ver Actividades</a>
+						<% if(u.getTipoUsuario().equals("Cliente")) { %>
+						<a href="../ha_clientes/listarPorCliente?id=<%=u.getIdUsuario()%>" class="btn btn-primary">Ver Actividades</a>
+						<a href="../cuotas_clientes/listarPorCliente?id=<%=u.getIdUsuario()%>" class="btn btn-info text-white">Ver Cuotas</a>						
+						<% } %>
+						
+						<% if(u.getTipoUsuario().equals("Profesor")) { %>
+						<a href="../ha/listarPorProfesor?id=<%=u.getIdUsuario()%>" class="btn btn-success">Ver Actividades</a>
 						<% } %>
 						
 						

@@ -80,6 +80,8 @@
     <url-pattern>/ha/nuevoHA</url-pattern>
     <url-pattern>/ha/listar</url-pattern>
     <url-pattern>/ha/eliminar</url-pattern>
+    <url-pattern>/ha/listarPorActividad</url-pattern>
+    <url-pattern>/ha/listarPorProfesor</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
@@ -90,5 +92,46 @@
   <servlet-mapping>
     <servlet-name>HAClienteServlet</servlet-name>
     <url-pattern>/HAClienteServlet</url-pattern>
+    <url-pattern>/ha_clientes/editar</url-pattern>
+    <url-pattern>/ha_clientes/editarHAC</url-pattern>
+    <url-pattern>/ha_clientes/nuevo</url-pattern>
+    <url-pattern>/ha_clientes/nuevoHAC</url-pattern>
+    <url-pattern>/ha_clientes/listar</url-pattern>
+    <url-pattern>/ha_clientes/eliminar</url-pattern>
+    <url-pattern>/ha_clientes/darDeBaja</url-pattern>
+    <url-pattern>/ha_clientes/listarPorCliente</url-pattern>
+    <url-pattern>/ha_clientes/listarPorActividad</url-pattern>
+    <url-pattern>/ha_clientes/HAdeActividad</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CuotaServlet</display-name>
+    <servlet-name>CuotaServlet</servlet-name>
+    <servlet-class>servlet.CuotaServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CuotaServlet</servlet-name>
+    <url-pattern>/CuotaServlet</url-pattern>
+    <url-pattern>/cuotas/listar</url-pattern>
+    <url-pattern>/cuotas/editar</url-pattern>
+    <url-pattern>/cuotas/editarCuota</url-pattern>
+  </servlet-mapping>
+  
+  
+  
+  
+  
+  <servlet>
+    <description></description>
+    <display-name>CuotaClienteServlet</display-name>
+    <servlet-name>CuotaClienteServlet</servlet-name>
+    <servlet-class>servlet.CuotaClienteServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CuotaClienteServlet</servlet-name>
+    <url-pattern>/CuotaClienteServlet</url-pattern>
+    <url-pattern>/cuotas_clientes/listar</url-pattern>
+    <url-pattern>/cuotas_clientes/listarPorCliente</url-pattern>
+    <url-pattern>/cuotas_clientes/listarPorCuota</url-pattern>
   </servlet-mapping>
 </web-app>

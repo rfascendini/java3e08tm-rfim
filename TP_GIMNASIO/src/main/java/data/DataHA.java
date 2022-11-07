@@ -60,6 +60,110 @@ public class DataHA {
 
 		return HorariosHAes;
 	}
+	
+	
+	public LinkedList<horarioActividad> listarHAporProfesor(int idProfesor) {
+		Statement stmt = null;
+		ResultSet rs = null;
+		LinkedList<horarioActividad> HorariosHAes = new LinkedList<>();
+
+		try {
+			stmt = DbConnector.getInstancia().conectar().createStatement();
+			rs = stmt.executeQuery("SELECT ha.*," + "CONCAT(u.apellido,', ',u.nombre) as 'apeNomUsuario', "
+					+ "a.nombre as 'nombreActividad' " + "FROM horariosactividades ha "
+					+ "INNER JOIN actividades a ON a.idActividad = ha.idActividad "
+					+ "INNER JOIN usuarios u ON u.idUsuario = ha.idUsuario "
+					+ "WHERE ha.eliminado = 0 AND ha.idUsuario = "+idProfesor);
+			if (rs != null) {
+				while (rs.next()) {
+					horarioActividad ha = new horarioActividad();
+					ha.setActividad(new actividad());
+					ha.setUsuario(new usuario());
+					ha.setIdHA(rs.getInt("idHA"));
+					ha.getActividad().setIdActividad(rs.getInt("idActividad"));
+					ha.getActividad().setNombre(rs.getString("nombreActividad")); 								
+					ha.getUsuario().setIdUsuario(rs.getInt("idUsuario"));
+					ha.getUsuario().setNombre(rs.getString("apeNomUsuario"));
+					ha.setDia(rs.getString("dia"));
+					ha.setHoraComienzo(rs.getObject("horaComienzo",LocalTime.class));
+					ha.setHoraFin(rs.getObject("horaFin",LocalTime.class));
+					ha.setCuposDisponibles(rs.getInt("cuposDisponibles"));
+					HorariosHAes.add(ha);
+				}
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+
+		} finally {
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+				if (stmt != null) {
+					stmt.close();
+				}
+				DbConnector.getInstancia().desconectar();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+		return HorariosHAes;
+	}
+	
+	
+	public LinkedList<horarioActividad> listarHAporActividad(int idActividad) {
+		Statement stmt = null;
+		ResultSet rs = null;
+		LinkedList<horarioActividad> HorariosHAes = new LinkedList<>();
+
+		try {
+			stmt = DbConnector.getInstancia().conectar().createStatement();
+			rs = stmt.executeQuery("SELECT ha.*," + "CONCAT(u.apellido,', ',u.nombre) as 'apeNomUsuario', "
+					+ "a.nombre as 'nombreActividad' " + "FROM horariosactividades ha "
+					+ "INNER JOIN actividades a ON a.idActividad = ha.idActividad "
+					+ "INNER JOIN usuarios u ON u.idUsuario = ha.idUsuario "
+					+ "WHERE ha.eliminado = 0 AND ha.idActividad = "+idActividad);
+			if (rs != null) {
+				while (rs.next()) {
+					horarioActividad ha = new horarioActividad();
+					ha.setActividad(new actividad());
+					ha.setUsuario(new usuario());
+					ha.setIdHA(rs.getInt("idHA"));
+					ha.getActividad().setIdActividad(rs.getInt("idActividad"));
+					ha.getActividad().setNombre(rs.getString("nombreActividad")); 								
+					ha.getUsuario().setIdUsuario(rs.getInt("idUsuario"));
+					ha.getUsuario().setNombre(rs.getString("apeNomUsuario"));
+					ha.setDia(rs.getString("dia"));
+					ha.setHoraComienzo(rs.getObject("horaComienzo",LocalTime.class));
+					ha.setHoraFin(rs.getObject("horaFin",LocalTime.class));
+					ha.setCuposDisponibles(rs.getInt("cuposDisponibles"));
+					HorariosHAes.add(ha);
+				}
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+
+		} finally {
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+				if (stmt != null) {
+					stmt.close();
+				}
+				DbConnector.getInstancia().desconectar();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+		return HorariosHAes;
+	}
+	
+	
 
 	public horarioActividad seleccionarPorID(horarioActividad HABuscado) {
 		horarioActividad ha = null;

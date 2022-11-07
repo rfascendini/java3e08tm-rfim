@@ -3,11 +3,11 @@ package entities;
 public class cuota {
 
 	int idCuota;
-	String mes;
+	int mes;
 	int anio;
-	double monto;
+	int monto;
 	
-	public cuota (int idCuota, String mes, int anio, double monto) {
+	public cuota (int idCuota, int mes, int anio, int monto) {
 		this.idCuota = idCuota;
 		this.mes = mes;
 		this.anio = anio;
@@ -26,11 +26,11 @@ public class cuota {
 		this.idCuota = idCuota;
 	}
 
-	public String getMes() {
+	public int getMes() {
 		return mes;
 	}
 
-	public void setMes(String mes) {
+	public void setMes(int mes) {
 		this.mes = mes;
 	}
 
@@ -42,11 +42,11 @@ public class cuota {
 		this.anio = anio;
 	}
 
-	public double getMonto() {
+	public int getMonto() {
 		return monto;
 	}
 
-	public void setMonto(double monto) {
+	public void setMonto(int monto) {
 		this.monto = monto;
 	}
 	

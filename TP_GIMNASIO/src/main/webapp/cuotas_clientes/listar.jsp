@@ -20,17 +20,7 @@ if (request.getSession().getAttribute("tpjava_usuario_sesionIniciada") == "true"
 <link rel="stylesheet" href="../css/bootstrap.min.css">
 <link rel="stylesheet" href="../css/estilos.css">
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<title>Listar Actividades</title>
-
-<style>
-th, td {
-	vertical-align: middle !important;
-}
-
-thead>tr>th {
-	color: white !important
-}
-</style>
+<title>Listar Horarios Actividades y Clientes</title>
 
 </head>
 <body class="bg-info">
@@ -55,37 +45,37 @@ thead>tr>th {
 	request.getSession().setAttribute("action_result_status",null);
 	request.getSession().setAttribute("action_result_message",null);
 	%>
+	
 
 	<jsp:include page="../header.jsp" />
 
 	<div class="container mt-5">
 
-		<table class="table p-0 table-hover bg-white shadow-xl rounded-3" style="max-width: 768">
+		<table class="table p-0 table-hover bg-white shadow-xl rounded-3"
+			style="max-width: 768">
 			<thead>
 				<tr class="bg-dark">
-					<th scope="col">ID</th>
-					<th scope="col">Nombre</th>
+					<th scope="col">Mes</th>
+					<th scope="col">Año</th>
+					<th scope="col">Monto</th>
 					<th scope="col">Acciones</th>
 				</tr>
 			</thead>
-			<tbody>
-
+			
 				<%
 				// CREAMOS UNA LINKED LIST DE Actividades
-				LinkedList<actividad> Actividades = (LinkedList<actividad>) request.getSession().getAttribute("listado_de_actividades");
+				LinkedList<cuota> cuotas = (LinkedList<cuota>) request.getSession().getAttribute("listado_de_cuotas");
 
 				// RECORREMOS LA LINKED LIST
-				for (actividad a : Actividades) {
+				for (cuota c : cuotas) {
 				%>
 
 				<tr>
-					<th scope="row"><%=a.getIdActividad()%></th>
-					<td><%=a.getNombre()%></td>
+					<td><%=c.getMes()%></td>
+					<td><%=c.getAnio()%></td>
+					<td><% if(c.getMonto() == 0) { out.print("Sin Asignar"); } else { out.print(c.getMonto()); }%></td>
 					<td>
-						<a href="editar?id=<%=a.getIdActividad()%>" class="btn btn-warning">Editar</a> 
-						<a href="../ha_clientes/listarPorActividad?id=<%=a.getIdActividad()%>" class="btn btn-secondary">Ver Clientes</a>
-						<a href="../ha/listarPorActividad?id=<%=a.getIdActividad()%>" class="btn btn-success">Ver Horarios</a>
-						<a href="eliminar?id=<%=a.getIdActividad()%>" class="btn btn-danger">Eliminar</a>
+						<a href="editar?id=<%=c.getIdCuota()%>" class="btn btn-warning">Editar Monto</a>
 					</td>
 				</tr>
 
@@ -101,9 +91,10 @@ thead>tr>th {
 
 	<jsp:include page="../footer.jsp" />
 
-
+	
 
 	<!-- JavaScript -->
+
 	<script src="../js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

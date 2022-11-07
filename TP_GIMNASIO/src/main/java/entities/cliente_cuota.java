@@ -1,19 +1,21 @@
 package entities;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 
 public class cliente_cuota {
 
 	int idCuotaCliente; 
-	int idCuota;
-	int idCliente;
-	LocalDate fechaPago;
+	public usuario usuario;
+	public cuota cuota; 
+	LocalDateTime fechaPago;
 	float montoAbonado;
 	
-	public cliente_cuota(int idCuotaCliente, int idCuota, int idCliente, LocalDate fechaPago, float montoAbonado) {
+	public cliente_cuota(int idCuotaCliente, int idCuota, int idCliente, LocalDateTime fechaPago, float montoAbonado) {
 		this.idCuotaCliente = idCuotaCliente;
-		this.idCuota = idCuota;
-		this.idCliente = idCliente;
+		this.cuota.setIdCuota(idCuota);
+		this.usuario.setIdUsuario(idCliente);
 		this.fechaPago = fechaPago;
 		this.montoAbonado = montoAbonado;
 	}
@@ -29,32 +31,29 @@ public class cliente_cuota {
 		this.idCuotaCliente = idCuotaCliente;
 	}
 
-	public int getIdCuota() {
-		return idCuota;
+
+	public usuario getUsuario() {
+		return usuario;
 	}
 
-
-	public void setIdCuota(int idCuota) {
-		this.idCuota = idCuota;
+	public void setUsuario(usuario usuario) {
+		this.usuario = usuario;
 	}
 
-
-	public int getIdCliente() {
-		return idCliente;
+	public cuota getCuota() {
+		return cuota;
 	}
 
-
-	public void setIdCliente(int idCliente) {
-		this.idCliente = idCliente;
+	public void setCuota(cuota cuota) {
+		this.cuota = cuota;
 	}
 
-
-	public LocalDate getFechaPago() {
+	public LocalDateTime getFechaPago() {
 		return fechaPago;
 	}
 
 
-	public void setFechaPago(LocalDate fechaPago) {
+	public void setFechaPago(LocalDateTime fechaPago) {
 		this.fechaPago = fechaPago;
 	}
 

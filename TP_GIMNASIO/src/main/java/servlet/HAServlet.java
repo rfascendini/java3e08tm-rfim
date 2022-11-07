@@ -52,16 +52,11 @@ public class HAServlet extends HttpServlet {
 				System.out.println("NO ESTA SELECCIONANDO UNA HA");
 			}
 		}
-		
-		
 
 		
 		if (request.getHttpServletMapping().getMatchValue().endsWith("/nuevo")) {
 			response.sendRedirect("./nuevo.jsp");
 		}
-		
-
-		
 		
 
 		if (request.getHttpServletMapping().getMatchValue().endsWith("/eliminar")) {
@@ -87,6 +82,24 @@ public class HAServlet extends HttpServlet {
 		if (request.getHttpServletMapping().getMatchValue().endsWith("/listar")) {
 			CtrlHA ctrlHA = new CtrlHA();
 			LinkedList<horarioActividad> ha = ctrlHA.listarHA();
+			request.getSession().setAttribute("listado_de_ha", ha);
+			response.sendRedirect("./listar.jsp");
+		}
+		
+		
+		if (request.getHttpServletMapping().getMatchValue().endsWith("/listarPorProfesor")) {
+			int idProfesor = Integer.parseInt(request.getParameter("id"));
+			CtrlHA ctrlHA = new CtrlHA();
+			LinkedList<horarioActividad> ha = ctrlHA.listarHAporProfesor(idProfesor);
+			request.getSession().setAttribute("listado_de_ha", ha);
+			response.sendRedirect("./listar.jsp");
+		}
+		
+		
+		if (request.getHttpServletMapping().getMatchValue().endsWith("/listarPorActividad")) {
+			int idActividad = Integer.parseInt(request.getParameter("id"));
+			CtrlHA ctrlHA = new CtrlHA();
+			LinkedList<horarioActividad> ha = ctrlHA.listarHAporActividad(idActividad);
 			request.getSession().setAttribute("listado_de_ha", ha);
 			response.sendRedirect("./listar.jsp");
 		}

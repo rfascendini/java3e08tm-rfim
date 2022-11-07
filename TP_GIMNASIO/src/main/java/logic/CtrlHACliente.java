@@ -10,11 +10,30 @@ public class CtrlHACliente {
 
 	public LinkedList<ha_cliente> listarHAC() {
 		
-		LinkedList<ha_cliente> listaHACes = new LinkedList<ha_cliente>();
+		LinkedList<ha_cliente> listaHAC = new LinkedList<ha_cliente>();
 		
-		listaHACes = dhac.listarHAC();
+		listaHAC = dhac.listarHAC();
 		
-		return listaHACes;
+		return listaHAC;
+			
+	}
+	
+	public LinkedList<ha_cliente> listarHACporActividad(int idActividad) {
+		
+		LinkedList<ha_cliente> listaHAC = new LinkedList<ha_cliente>();
+		
+		listaHAC = dhac.listarHACporActividad(idActividad);
+		
+		return listaHAC;
+	}
+	
+	public LinkedList<ha_cliente> listarHACporCliente(int idCliente) {
+		
+		LinkedList<ha_cliente> listaHAC = new LinkedList<ha_cliente>();
+		
+		listaHAC = dhac.listarHACporCliente(idCliente);
+		
+		return listaHAC;
 			
 	}
 	
@@ -61,6 +80,16 @@ public class CtrlHACliente {
 		return eliminarHAC;
 
 	}
+	
+	public int darDeBajaHAC(ha_cliente hac) {
+
+		int darDeBajaHAC = dhac.darDeBajaHAC(hac);
+
+		return darDeBajaHAC;
+
+	}
+
+
 	
 	
 }

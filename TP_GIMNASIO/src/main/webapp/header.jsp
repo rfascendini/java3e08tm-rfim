@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
   <div class="container-fluid d-flex justify-content-between">
   	<div>
-    <a class="navbar-brand" href="request.getContextPath()/menu.jsp">INICIO</a>
+    <a class="navbar-brand" href="<%=request.getContextPath()%>/menu.jsp">INICIO</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -34,6 +34,17 @@
         
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            HA Clientes
+          </a>
+          <ul class=" dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="<%=request.getContextPath()%>/ha_clientes/nuevo">Nuevo</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="<%=request.getContextPath()%>/ha_clientes/listar">Listar</a></li>
+          </ul>
+        </li>
+        
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Usuarios
           </a>
           <ul class=" dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
@@ -49,15 +60,26 @@
           </ul>
         </li>
         
-        <!-- 
+
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Cuotas
           </a>
           <ul class=" dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Registrar Pago</a></li>
+            <li><a class="dropdown-item" href="<%=request.getContextPath()%>/cuotas/listar">Listar</a></li>
           </ul>
-        </li> -->
+        </li>
+        
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Cuotas Clientes
+          </a>
+          <ul class=" dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="<%=request.getContextPath()%>/cuotas/nuevo">Registrar Pago</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="<%=request.getContextPath()%>/cuotas/listar">Listar</a></li>
+          </ul>
+        </li>
         
       </ul>
       
