@@ -74,10 +74,9 @@ public class Login extends HttpServlet {
 		} else {
 
 			// DEVOLVER ERROR DE USUARIO NO ENCONTRADO
-			request.setAttribute("error", "El usuario no fue encontrado");
-
-			// REDIRECCIONAMOS AL INDEX.JSP
-			request.getRequestDispatcher("index.jsp").forward(request, response);
+			request.getSession().setAttribute("action_result_status", "0");
+			request.getSession().setAttribute("action_result_message", "El usuario no fue encontrado");
+			response.sendRedirect("index.jsp");
 		}
 
 	}

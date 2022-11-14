@@ -101,6 +101,8 @@ if (request.getSession().getAttribute("tpjava_usuario_sesionIniciada") == "true"
 
 <%
 } else {
-response.sendRedirect("../index.jsp?error=sesionNoIniciada");
+	request.getSession().setAttribute("action_result_status", "sesionNoIniciada");
+	request.getSession().setAttribute("action_result_message", "Debe iniciar sesión para continuar...");
+	response.sendRedirect("../index.jsp");
 }
 %>

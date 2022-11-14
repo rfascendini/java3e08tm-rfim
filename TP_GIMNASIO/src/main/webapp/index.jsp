@@ -8,6 +8,7 @@
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <link rel="stylesheet" href="css/estilos.css">
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <title>Login</title>
 
@@ -30,6 +31,36 @@
 		sesion.invalidate();
 		response.sendRedirect("index.jsp");
 	}
+	%>
+	
+	<% 
+	if(request.getSession().getAttribute("action_result_status") == "1") { %>
+		<script>
+			Swal.fire({
+			  icon: 'success',
+			  title: '<%=request.getSession().getAttribute("action_result_message") %>',
+			})
+		</script>
+	<% } else if(request.getSession().getAttribute("action_result_status") == "0") { %>
+		<script>
+		Swal.fire({
+			icon : 'error',
+			title : 'Oops...',
+			text : '<%=request.getSession().getAttribute("action_result_message") %>',
+		})
+		</script>
+	<% }  else if(request.getSession().getAttribute("action_result_status") == "sesionNoIniciada") { %>
+	<script>
+	Swal.fire({
+		icon : 'error',
+		title : 'ERROR...',
+		text : '<%=request.getSession().getAttribute("action_result_message") %>',
+	})
+	
+	</script>
+<% }
+	request.getSession().setAttribute("action_result_status",null);
+	request.getSession().setAttribute("action_result_message",null);
 	%>
 
 

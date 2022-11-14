@@ -7,9 +7,11 @@ public class DbConnector {
 	private static DbConnector instancia;
 	
 	private String driver="com.mysql.cj.jdbc.Driver";
+	//private String host="node120221-rfimjava2022.jelastic.saveincloud.net";
 	private String host="localhost";
 	private String port="3306";
 	private String user="root";
+	//private String password="6kI6RJ1EoH";
 	private String password="root";
 	private String db="tpjava_gimnasio";
 	private int conectados=0;
