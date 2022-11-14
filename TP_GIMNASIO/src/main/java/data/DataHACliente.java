@@ -89,16 +89,16 @@ public class DataHACliente {
 			stmt = DbConnector.getInstancia().conectar().createStatement();
 			rs = stmt.executeQuery(
 					"SELECT hac.*, "
-					+ "CONCAT(u.apellido,', ',u.nombre) as 'apeNomUsuario', "
-					+ "a.nombre as 'nombreActividad', "
-					+ "ha.horaComienzo as 'horaComienzo', "
-					+ "ha.horaFin as 'horaFin', "
-					+ "ha.dia as 'dia' "
+					+ "	CONCAT(u.apellido,', ',u.nombre) as 'apeNomUsuario', "
+					+ "	a.nombre as 'nombreActividad', "
+					+ "	ha.horaComienzo as 'horaComienzo', "
+					+ "	ha.horaFin as 'horaFin', "
+					+ "	ha.dia as 'dia' "
 					+ "FROM ha_clientes hac "
 					+ "INNER JOIN horariosactividades ha ON ha.idHA = hac.idHA "
 					+ "INNER JOIN actividades a ON a.idActividad = ha.idActividad "
 					+ "INNER JOIN usuarios u ON u.idUsuario = hac.idUsuario "
-					+ "WHERE hac.idUsuario = "+idCliente);
+					+ "WHERE hac.fechaBaja IS NULL AND hac.eliminado = 0 AND hac.idUsuario = "+idCliente);
 			if (rs != null) {
 				while (rs.next()) {
 					ha_cliente hac = new ha_cliente();

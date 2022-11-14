@@ -19,6 +19,16 @@ public class CtrlCuota {
 			
 	}
 	
+public LinkedList<cuota> listarCuotasDisponibles() {
+		
+		LinkedList<cuota> listaCuotas = new LinkedList<cuota>();
+		
+		listaCuotas = da.listarCuotasDisponibles();
+		
+		return listaCuotas;
+			
+	}
+	
 	
 	public cuota getCuota(int idCuota) {
 

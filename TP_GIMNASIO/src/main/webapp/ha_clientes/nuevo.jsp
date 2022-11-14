@@ -61,6 +61,7 @@ if (request.getSession().getAttribute("tpjava_usuario_sesionIniciada") == "true"
 					
 
 					<!-- PROFESORES  PROFESORES PROFESORES PROFESORES PROFESORES PROFESORES PROFESORES PROFESORES PROFESORES -->
+					<% if(request.getSession().getAttribute("tpjava_usuario_tipoUsuario").equals("Admin") || request.getSession().getAttribute("tpjava_usuario_tipoUsuario").equals("Administrativo")) { %>
 					<div class="col-12">
 						<label for="idUsuario" class="form-label">CLIENTE</label>
 						
@@ -78,7 +79,9 @@ if (request.getSession().getAttribute("tpjava_usuario_sesionIniciada") == "true"
 						<div class="invalid-feedback">Se requiere un CLIENTE válido</div>
 					</div>
 					<!-- PROFESORES  PROFESORES PROFESORES PROFESORES PROFESORES PROFESORES PROFESORES PROFESORES PROFESORES -->
-					
+					<% } else if(request.getSession().getAttribute("tpjava_usuario_tipoUsuario").equals("Cliente")) { %>
+						<input type="hidden" name="idUsuario" value="<%=request.getSession().getAttribute("tpjava_usuario_idUsuario") %>">
+					<% } %>
 					
 				</div>
 	

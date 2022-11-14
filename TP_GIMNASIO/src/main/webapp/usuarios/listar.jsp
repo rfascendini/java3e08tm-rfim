@@ -72,7 +72,7 @@ thead>tr>th {
 						
 						<% if(u.getTipoUsuario().equals("Cliente")) { %>
 						<a href="../ha_clientes/listarPorCliente?id=<%=u.getIdUsuario()%>" class="btn btn-primary">Ver Actividades</a>
-						<a href="../cuotas_clientes/listarPorCliente?id=<%=u.getIdUsuario()%>" class="btn btn-info text-white">Ver Cuotas</a>						
+						<a href="../cuotas_clientes/listarCuotasPorCliente?idUsuario=<%=u.getIdUsuario()%>" class="btn btn-info text-white">Ver Cuotas</a>						
 						<% } %>
 						
 						<% if(u.getTipoUsuario().equals("Profesor")) { %>

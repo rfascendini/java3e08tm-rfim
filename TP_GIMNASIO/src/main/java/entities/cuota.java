@@ -4,12 +4,14 @@ public class cuota {
 
 	int idCuota;
 	int mes;
+	String nombreMes;
 	int anio;
 	int monto;
 	
-	public cuota (int idCuota, int mes, int anio, int monto) {
+	public cuota (int idCuota, int mes, String nombreMes, int anio, int monto) {
 		this.idCuota = idCuota;
 		this.mes = mes;
+		this.nombreMes = nombreMes;
 		this.anio = anio;
 		this.monto = monto;
 	}
@@ -20,6 +22,14 @@ public class cuota {
 
 	public int getIdCuota() {
 		return idCuota;
+	}
+
+	public String getNombreMes() {
+		return nombreMes;
+	}
+
+	public void setNombreMes(String nombreMes) {
+		this.nombreMes = nombreMes;
 	}
 
 	public void setIdCuota(int idCuota) {

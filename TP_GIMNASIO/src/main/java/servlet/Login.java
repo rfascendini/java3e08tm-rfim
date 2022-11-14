@@ -54,6 +54,7 @@ public class Login extends HttpServlet {
 
 			// SETEAMOS LOS VALORES DEL USUARIO ENCONTRADO EN LA SESION
 			request.getSession().setAttribute("tpjava_usuario_idUsuario", usuarioEncontrado.getIdUsuario());
+			request.getSession().setAttribute("tpjava_usuario_tipoUsuario", usuarioEncontrado.getTipoUsuario());
 			request.getSession().setAttribute("tpjava_usuario_nombre", usuarioEncontrado.getNombre());
 			request.getSession().setAttribute("tpjava_usuario_apellido", usuarioEncontrado.getApellido());
 			request.getSession().setAttribute("tpjava_usuario_fechaNacimiento", usuarioEncontrado.getFechaNacimiento());

@@ -133,5 +133,8 @@
     <url-pattern>/cuotas_clientes/listar</url-pattern>
     <url-pattern>/cuotas_clientes/listarPorCliente</url-pattern>
     <url-pattern>/cuotas_clientes/listarPorCuota</url-pattern>
+    <url-pattern>/cuotas_clientes/pagarCuotaDesdeCliente</url-pattern>
+    <url-pattern>/cuotas_clientes/pagarCuotaDesdeCuota</url-pattern>
+    <url-pattern>/cuotas_clientes/listarCuotasPorCliente</url-pattern>
   </servlet-mapping>
 </web-app>

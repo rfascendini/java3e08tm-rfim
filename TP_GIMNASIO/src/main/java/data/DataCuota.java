@@ -25,6 +25,49 @@ public class DataCuota {
 					c.setIdCuota(rs.getInt("idCuota"));
 					c.setAnio(rs.getInt("año"));
 					c.setMes(rs.getInt("mes"));
+					c.setNombreMes(rs.getString("nombreMes"));
+					c.setMonto(rs.getInt("monto"));
+
+					Cuotas.add(c);
+				}
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+
+		} finally {
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+				if (stmt != null) {
+					stmt.close();
+				}
+				DbConnector.getInstancia().desconectar();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+		return Cuotas;
+	}
+	
+	public LinkedList<cuota> listarCuotasDisponibles() {
+		Statement stmt = null;
+		ResultSet rs = null;
+		LinkedList<cuota> Cuotas = new LinkedList<>();
+
+		try {
+			stmt = DbConnector.getInstancia().conectar().createStatement();
+			rs = stmt.executeQuery("select * from cuotas where monto is not null");
+			if (rs != null) {
+				while (rs.next()) {
+					cuota c = new cuota();
+
+					c.setIdCuota(rs.getInt("idCuota"));
+					c.setAnio(rs.getInt("año"));
+					c.setMes(rs.getInt("mes"));
+					c.setNombreMes(rs.getString("nombreMes"));
 					c.setMonto(rs.getInt("monto"));
 
 					Cuotas.add(c);
@@ -66,6 +109,7 @@ public class DataCuota {
 					c.setIdCuota(rs.getInt("idCuota"));
 					c.setAnio(rs.getInt("año"));
 					c.setMes(rs.getInt("mes"));
+					c.setNombreMes(rs.getString("nombreMes"));
 					c.setMonto(rs.getInt("monto"));
 
 					Cuotas.add(c);
@@ -136,6 +180,7 @@ public class DataCuota {
 				r.setIdCuota(rs.getInt("idCuota"));
 				r.setAnio(rs.getInt("año"));
 				r.setMes(rs.getInt("mes"));
+				r.setNombreMes(rs.getString("nombreMes"));
 				r.setMonto(rs.getInt("monto"));
 			}
 		} catch (SQLException e) {
