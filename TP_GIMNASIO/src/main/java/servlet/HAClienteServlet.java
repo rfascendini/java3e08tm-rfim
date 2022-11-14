@@ -5,13 +5,12 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import logic.CtrlHA;
+
 import logic.CtrlHACliente;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
+
 import java.util.LinkedList;
 
 import entities.ha_cliente;
@@ -116,8 +115,6 @@ public class HAClienteServlet extends HttpServlet {
 		doGet(request, response);
 
 		String accion = request.getParameter("accion");
-		String timeFormat = "yyyy-MM-dd HH:mm:ss";
-		DateTimeFormatter dtFormat = DateTimeFormatter.ofPattern(timeFormat);
 		ha_cliente hac = new ha_cliente();
 		CtrlHACliente ctrlHAC = new CtrlHACliente();
 

@@ -4,15 +4,14 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import logic.CtrlActividad;
+
 import logic.CtrlHA;
 
 
 import java.io.IOException;
-import java.time.LocalDate;
+
 import java.time.LocalTime;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
+
 import java.time.format.DateTimeFormatter;
 import java.util.LinkedList;
 

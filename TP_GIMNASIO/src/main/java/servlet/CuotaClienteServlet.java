@@ -1,20 +1,20 @@
 package servlet;
 
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
+
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import logic.CtrlCuota;
+
 import logic.CtrlCuotaCliente;
-import logic.CtrlHA;
+
 
 import java.io.IOException;
 import java.util.LinkedList;
 
 import entities.cliente_cuota;
 import entities.cuota;
-import entities.horarioActividad;
+
 import entities.usuario;
 
 /**

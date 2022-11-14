@@ -2,11 +2,11 @@ package logic;
 
 import java.util.LinkedList;
 
-import data.DataCuota;
+
 import data.DataCuotaCliente;
 import entities.cliente_cuota;
 import entities.cuota;
-import entities.horarioActividad;
+
 import entities.usuario;
 
 public class CtrlCuotaCliente {

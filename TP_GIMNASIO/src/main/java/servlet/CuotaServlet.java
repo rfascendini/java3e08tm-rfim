@@ -1,22 +1,19 @@
 package servlet;
 
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
+
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import logic.CtrlCuota;
-import logic.CtrlHA;
+
 
 import java.io.IOException;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
+
 import java.util.LinkedList;
 
-import entities.actividad;
 import entities.cuota;
-import entities.horarioActividad;
-import entities.usuario;
+
 
 /**
  * Servlet implementation class CuotaServlet

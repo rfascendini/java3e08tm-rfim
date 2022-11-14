@@ -1,18 +1,12 @@
 package servlet;
 
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import logic.CtrlLogin;
 import logic.CtrlUsuario;
 
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import java.util.LinkedList;
 
 import entities.usuario;
@@ -21,7 +15,6 @@ import entities.usuario;
  * Servlet implementation class UserServlet
  */
 
-@WebServlet("/UsuarioServlet")
 
 public class UsuarioServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;

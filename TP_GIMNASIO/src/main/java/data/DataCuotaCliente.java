@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 
 import entities.cliente_cuota;
 import entities.cuota;
-import entities.horarioActividad;
+
 import entities.usuario;
 
 public class DataCuotaCliente {
