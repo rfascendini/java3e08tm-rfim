@@ -1,10 +1,10 @@
 package logic;
 
-import logic.*;
+
 import entities.*;
 import data.*;
 
-import java.util.Arrays;
+
 import java.util.LinkedList;
 
 public class CtrlUsuario {
